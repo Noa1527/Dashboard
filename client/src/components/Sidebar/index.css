@@ -1,0 +1,55 @@
+.sidebar-content{
+    background-color: #20293D;
+    height: 100%;
+    width: 15%;
+}
+.header{
+    /* background: white; */
+    height:5%;
+}
+h1{
+    color: white;
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding-top: 15px;
+}
+.profile{
+    height:25%;
+
+}
+.name{
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding-top: 30%;
+}
+.email{
+    font-size: 1em;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding-top: 0px; 
+}
+.menu{
+    height:70%;
+}
+li{
+    list-style: none;
+    padding-top: 10px;
+    padding-left: 15px;
+    font-size: 1em;
+    font-weight: 300;
+    color: white;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: white;
+    padding-left: 10px;
+}

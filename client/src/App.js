@@ -1,9 +1,11 @@
 import React from 'react';
-
+import Router from './components/Routes';
 const App = () => {
   return (
-    <div>
-      <h1>coucou</h1>
+    <div className="app">
+      <div className="content">
+        <Router />
+      </div>
     </div>
   );
 };
