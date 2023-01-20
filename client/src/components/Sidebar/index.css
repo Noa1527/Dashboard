@@ -1,7 +1,7 @@
 .sidebar-content{
     background-color: #20293D;
     height: 100%;
-    width: 15%;
+    width: 100%;
 }
 .header{
     /* background: white; */
@@ -29,12 +29,13 @@ h1{
     padding-top: 30%;
 }
 .email{
-    font-size: 1em;
+    font-size: 0.7em;
     font-weight: 300;
     margin: 0;
     padding: 0;
     text-align: center;
-    padding-top: 0px; 
+    padding-top: 0px;
+    color: #68B9A0;
 }
 .menu{
     height:70%;
@@ -53,3 +54,9 @@ a{
     color: white;
     padding-left: 10px;
 }
+a:hover{
+    color: #4b4398;
+}
+/* a:active{
+    color: #4b4398;
+} */

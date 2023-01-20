@@ -22,7 +22,7 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <FaUserCircle/>
-                        <NavLink to={'/'}>profile</NavLink>
+                        <NavLink to={'/user'}>profile</NavLink>
                     </li>
                 </ul>
             </div>
