@@ -1,0 +1,41 @@
+.widget-container {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: start;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+/* WidgetBlock.js */
+.widget-block{
+    width: 30%;
+    height: 40%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-color: #20293D;
+}
+.widget-block-header{
+    height: 15%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.widget-block-body{
+    height: 85%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    overflow-y: scroll;
+}
+.scrollbar {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: 25px;
+    
+}
+/*  */
