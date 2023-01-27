@@ -3,8 +3,8 @@ import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 // import './log.scss';
 function Log(props) {
-    const [loginActive, setLoginActive] = useState('btn btn-block ')
-    const [registerActive, setRegisterActive] = useState('btn btn-block ')
+    const [loginActive, setLoginActive] = useState('btn btn-block text-white')
+    const [registerActive, setRegisterActive] = useState('btn btn-block text-white')
     const [registerModal, setRegisterModal] = useState(props.register);
     const [loginModal, setLoginModal] = useState(props.login);
 

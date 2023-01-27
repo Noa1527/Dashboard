@@ -3,9 +3,8 @@ import axios from 'axios';
 
 const LogoutPage = () => {
 
-   const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     console.log(token);
-    console.log('coucou')
 
     const handlelogout = (e) => {
         e.preventDefault();
@@ -20,6 +19,8 @@ const LogoutPage = () => {
         })
             .then((res) => {
                 localStorage.removeItem('token');
+                localStorage.removeItem('tokenTwitch');
+                localStorage.removeItem('id');
                 window.location.href = '/';
                 console.log(res);
             })

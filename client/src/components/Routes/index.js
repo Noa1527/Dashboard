@@ -5,6 +5,7 @@ import NavBar from '../NavBar';
 // import Footer from '../Footer';
 import Home from '../../pages/Home';
 import User from '../../pages/User';
+// import Widget from '../../pages/Widget';
 import Sidebar from '../Sidebar';
 import './index.css';
 import Login from '../../pages/Login';
@@ -33,6 +34,7 @@ const Router = () => {
                 <Routes>
 
                   <Route path="/" element={<Home />} />
+                  {/* <Route path="/widget" element={<Widget />} /> */}
                   <Route path="/user" element={<User />} />
                   <Route path="/connection" element={<Login />} />
                   <Route path="/se_déconnecter" element={<Logout />} />

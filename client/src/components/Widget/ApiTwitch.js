@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const ApiTwitch = () => {
     const [follows, setFollows] = React.useState([]);
-    let mika = '218590652'
-    let wilfrid = '485807027'
+    // let mika = '218590652'
+    // let wilfrid = '485807027'
     let nico = '641517765'
     const location = useLocation();
     let token = location.hash.split('&')[0].split('=')[1];
-    
-    axios({
+    useEffect(() => {
+        const fetchData = async () => {
+    await axios({
         method: 'get',
         url: 'https://api.twitch.tv/helix/users/follows',
         headers: {
@@ -28,6 +29,9 @@ const ApiTwitch = () => {
     .catch((err) => {
         console.log(err);
     });
+        };
+        fetchData();
+    }, []);
     return (
         <div>
             <h1>j'ai: {follows} followers</h1>

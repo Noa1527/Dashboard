@@ -10,7 +10,7 @@ import { UidContext } from '../Hook/AppContext';
 
 const NavBar = () => {
   const uid = useContext(UidContext);
-
+  
   return (
     <>
       <Navbar className='w-100' expand="lg">
@@ -25,14 +25,15 @@ const NavBar = () => {
             {uid
               ?
               <NavLink
-                className="ps-4 pe-4 nav-link"
+                className="ps-4 pe-4 nav-link text-light"
                 to="/se_déconnecter"
+
               >
                 Me déconnecter
               </NavLink>
               :
               <NavLink
-                className="ps-4 pe-4 nav-link"
+                className="ps-4 pe-4 nav-link text-light"
                 to="/connection"
               >
                 Connexion

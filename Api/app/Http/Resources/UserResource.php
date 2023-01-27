@@ -16,6 +16,7 @@ class UserResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
+            "id" => $this->id,
             "name" => ucfirst($this->name), // La 1er lettre en majuscule
             "email" => $this->email,
         ];

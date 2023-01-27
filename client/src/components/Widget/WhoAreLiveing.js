@@ -1,24 +1,34 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
+import ConnectionTwitch from './ConnectionTwitch';
 
 const WhoAreLiveing = () => {
+    const [watche, setWatche] = React.useState([]);
+    const [tokenTwitch, setTokenTwitch] = React.useState(null);
+    // console.log('-------'+watche);
     const updateInterval = 60000;
+    const updateIntervalStart = 600;
     let mika = '218590652'
+
     // let wilfrid = '485807027'
     // let nico = '641517765'
-    const location = useLocation();
-    let token = location.hash.split('&')[0].split('=')[1];
-    const [watche, setWatche] = React.useState([]);
+    useEffect(() => {
+        if(localStorage.getItem("tokenTwitch") === "undefined" || localStorage.getItem("tokenTwitch") === null){
+            // console.log('coucou');
+        } else{
+            setTokenTwitch(localStorage.getItem("tokenTwitch"));
+        }
+    }, [tokenTwitch]);
 
-    const fetchStream = async () => { 
-       await axios({
+    const fetchStream = async () => {
+
+        await axios({
             method: 'get',
             url: 'https://api.twitch.tv/helix/streams/followed',
             headers: {
                 "client-id": "25zxhtclm3nu9t8ymbwjtq4ve1gvk6",
-                "authorization": `Bearer ${token}`
+                "authorization": `Bearer ${tokenTwitch}`
             },
             params: {
                 user_id: mika
@@ -31,43 +41,75 @@ const WhoAreLiveing = () => {
             .catch((err) => {
                 console.log(err);
             });
-
     };
-    
-    setInterval(fetchStream, updateInterval);
+    // if (tokenTwitch ) {
+    //     console.log('bidabidou');
+    // }
+    // console.log(tokenTwitch);
+    // console.log(typeof tokenTwitch);
+    // console.log('tokenTwitch'+tokenTwitch);
+    // if (tokenTwitch) {
+    //     if (watche.length === 0) {
+    //         console.log('600ms');
+    //     } else {
+    //         console.log('600000ms');
+    //     }
+    // }
+
+    if (tokenTwitch) {
+        if (watche.length === 0) {
+            setInterval(fetchStream, updateIntervalStart);
+        } else {
+            setInterval(fetchStream, updateInterval);
+        }
+    }
+
+
     return (
-        <Table bordered>
-            <thead>
-                <tr className='text-white'>
-                    <th>#</th>
-                    <th>Username</th>
-                    <th>Game Name</th>
-                    <th>Viewer Count</th>
-                </tr>
-            </thead>
-            <tbody>
-            {(watche)
-                ? watche.map((value, key) => {
-                    return (
-                        <tr className='text-white'key={key}>
-                            <td>{key}</td>
-                            <td>{value.user_name}</td>
-                            <td>{value.game_name}</td>
-                            <td>{value.viewer_count}</td>
-                        </tr>
-                    )
-                })
-                : null
+        <>
+            {/* {tokenTwitch ? 'lol' : 'ok'} */}
+            {tokenTwitch 
+                ? (
+                    <Table bordered>
+                        <thead>
+                            <tr className='text-darck'>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Game Name</th>
+                                <th>Viewer Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {(watche)
+                                ? watche.map((value, key) => {
+                                    return (
+                                        <tr className='text-darck' key={key}>
+                                            <td>{key}</td>
+                                            <td>{value.user_name}</td>
+                                            <td>{value.game_name}</td>
+                                            <td>{value.viewer_count}</td>
+                                        </tr>
+                                    )
+                                })
+                                : null
+                            }
+                        </tbody>
+                    </Table>
+                )
+                :
+                (
+                    <>
+                        <div className="content-button">
+                            <div className='text-white'>Please login to see the list of streamers</div>
+                            <ConnectionTwitch />
+                        </div>
+                    </>
+                )
+
             }
-            </tbody>
-        </Table>
+        </>
+
     );
 };
 
 export default WhoAreLiveing;
-
-// <div className='w-100 h-100 d-flex'>
-                    //     <h1 className='pt-0 ms-2 me-2'></h1>
-                    //     <p className='mb-0 ms-2 me-2'></p>
-                    //     <p className='mb-0 ms-2 me-2'></p>
-                    // </div>

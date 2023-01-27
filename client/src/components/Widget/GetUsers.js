@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
 const GetUsers = () => {
-    let mika = '218590652'
-    let wilfrid = '485807027'
+    // let mika = '218590652'
+    // let wilfrid = '485807027'
     const location = useLocation();
     let token = location.hash.split('&')[0].split('=')[1];
     axios({

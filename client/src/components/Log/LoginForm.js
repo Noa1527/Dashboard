@@ -9,7 +9,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
-
+    console.log(email, password);
     const handleLogin = (e) => {
         e.preventDefault();
         const emailError = document.querySelector('.emailerror');
@@ -27,20 +27,24 @@ const LoginForm = () => {
             },
         })
             .then((res) => {
+                console.log(res);
                 if (res.data.errors) {
                     emailError.innerHTML = res.data.errors.email;
                     passwordError.innerHTML = res.data.errors.password;
                 } else {
                     //get token from response
                     const token = res.data.token
+                    const id = res.data.id
                     //set JWT token to local
                     localStorage.setItem("token", token);
+                    localStorage.setItem("id", id);
                     //set token to axios common header
                     setAuthToken(token);
                     window.location = '/';
                 }
             })
             .catch((err) => {
+                console.log(err);
                 if (err.response.status === 401) {
                     setError("Combinaison nom d'utilisateur et mot de passe non valide") 
                 }else{

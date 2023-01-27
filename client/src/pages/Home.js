@@ -1,10 +1,19 @@
 import React, { useContext } from 'react';
 import { Carousel } from 'react-bootstrap';
 import { UidContext } from '../components/Hook/AppContext';
-import Widget from '../components/Widget';
 import { Carou } from '../Helpers/CarousselData';
+import { useLocation } from 'react-router-dom';
+import WidgetContent from '../components/Widget/WidgetContent';
+
+
 const Home = () => {
+    const location = useLocation();
     const Uid = useContext(UidContext);
+    if (Uid) {
+        let getTokenTwitch = location.hash.split('&')[0].split('=')[1];
+        localStorage.setItem("tokenTwitch", getTokenTwitch);
+    }
+
 
     return (
         <>
@@ -13,8 +22,9 @@ const Home = () => {
                 <>
                     <div className='w-100' style={{ height: '10%' }} >
                         <h1>Home</h1>
+                        <WidgetContent />
                     </div>
-                    <Widget />
+
                 </>
                 :
                 <div className='w-100 h-100 flex-column align-items-center'>

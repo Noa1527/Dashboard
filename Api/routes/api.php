@@ -23,11 +23,13 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group( function () {
     Route::apiResource('users', UserController::class);
+
     Route::group(['middleware' => ['role:admin']], function () {
-        Route::apiResource('users', AdminUserController::class);
+        Route::apiResource('admin', AdminUserController::class);
         Route::apiResource('roles', RoleController::class);
         Route::apiResource('permission', PermissionController::class);
     });
+
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
