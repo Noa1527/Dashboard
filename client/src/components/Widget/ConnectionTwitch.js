@@ -1,6 +1,6 @@
 import React from 'react';
     
-const ConnectionTwitch = (props) => {
+const ConnectionTwitch = () => {
     
     const TWITCH_OAUTH_URL = 'https://id.twitch.tv/oauth2/authorize';
     const CLIENT_ID = '25zxhtclm3nu9t8ymbwjtq4ve1gvk6';
@@ -16,12 +16,11 @@ const ConnectionTwitch = (props) => {
     };
     return (
         <div 
-            className='bg-primary'
             style={{
                 height: '10px',
             }}
         >
-            <button onClick={hundleClick}>Connection Twitch</button>
+            <button className='btn btn-primary' onClick={hundleClick}>Connection Twitch</button>
         </div>
     );
 };

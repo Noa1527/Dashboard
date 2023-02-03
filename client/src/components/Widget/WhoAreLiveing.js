@@ -6,20 +6,25 @@ import ConnectionTwitch from './ConnectionTwitch';
 const WhoAreLiveing = () => {
     const [watche, setWatche] = React.useState([]);
     const [tokenTwitch, setTokenTwitch] = React.useState(null);
-    // console.log('-------'+watche);
+    
     const updateInterval = 60000;
     const updateIntervalStart = 600;
+    let intervalId = null;
     let mika = '218590652'
 
     // let wilfrid = '485807027'
     // let nico = '641517765'
+
     useEffect(() => {
         if(localStorage.getItem("tokenTwitch") === "undefined" || localStorage.getItem("tokenTwitch") === null){
-            // console.log('coucou');
         } else{
             setTokenTwitch(localStorage.getItem("tokenTwitch"));
         }
-    }, [tokenTwitch]);
+        if (intervalId > 20) {
+            console.log( intervalId);
+            clearInterval(intervalId);
+        }
+    }, [intervalId]);
 
     const fetchStream = async () => {
 
@@ -42,32 +47,23 @@ const WhoAreLiveing = () => {
                 console.log(err);
             });
     };
-    // if (tokenTwitch ) {
-    //     console.log('bidabidou');
-    // }
-    // console.log(tokenTwitch);
-    // console.log(typeof tokenTwitch);
-    // console.log('tokenTwitch'+tokenTwitch);
-    // if (tokenTwitch) {
-    //     if (watche.length === 0) {
-    //         console.log('600ms');
-    //     } else {
-    //         console.log('600000ms');
-    //     }
-    // }
+    //fetchStream();
 
     if (tokenTwitch) {
         if (watche.length === 0) {
-            setInterval(fetchStream, updateIntervalStart);
+            intervalId = setInterval(fetchStream, updateIntervalStart);
+            console.log('600ms');
         } else {
-            setInterval(fetchStream, updateInterval);
+            intervalId = setInterval(fetchStream, updateInterval);
+            console.log('60000ms');
+
         }
+       
     }
 
 
     return (
         <>
-            {/* {tokenTwitch ? 'lol' : 'ok'} */}
             {tokenTwitch 
                 ? (
                     <Table bordered>
